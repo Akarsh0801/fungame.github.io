@@ -10,18 +10,18 @@
 <body>
  <div style="background-image: url('bg1.jpg');" class="mt- h-screen w-full bg-cover bg-center">
   <div class="flex mx-auto my-auto justify-center items-center">
-   <div id="card" class="flex flex-col items-center  h-80 w-72 bg-slate-700 mt-64 rounded-md p-4">
+   <div id="card" class="flex flex-col items-center md:w-96 lg:w-96 h-auto w-72 bg-slate-700 md:mt-80 mt-64 rounded-md p-6">
 
 
-<div class="text-xl font-semibold p-2 inline-block text-white text-center pt-5">One who get a number grater than 10 will win.</div>
-<div id="score" class="pt-10 text-lg font-semibold text-green-500">Score</div>
+<div class="text-xl  p-2 inline-block text-white text-center pt-4 md:pt-8 lg:pt-8">One who gets a number greater than opponent and 10 will win.</div>
+<div id="score" class="score pt-5 text-lg font-semibold text-green-500">Result</div>
 <div class="flex flex-row space-x-32 pt-4">
-<div id="p1">0</div>
-<div id="p2">0</div>
+<div id="p1"></div>
+<div id="p2"></div>
 </div>
 
 
-<div id="buttons" class="flex flex-row space-x-5">
+<div id="buttons" class="flex flex-row space-x-5 mt-5 py-4">
     <div id="btn1" >
         <button  class="text-lg font-mono text-white h-10 w-28 bg-transparent rounded-full border-2 border-white hover:bg-white hover:text-slate-800" >Player 1</button> 
     </div>
@@ -39,27 +39,40 @@
  <script>
    var button1 =document.querySelector('#btn1')
    var score1= document.querySelector('#p1')
-   var score1 = 0
+   var score1 = ''
 
    var button2 =document.querySelector('#btn2')
    var score2= document.querySelector('#p2')
-   var score2 = 0
+   var score2 = ''
 
+   var random1
+   var random2
+   
    button1.addEventListener("click",function(){
-    var random1 = Math.floor(Math.random()*10)
+     random1 = Math.floor(Math.random()*20)
     p1.textContent = random1
+
+
+
+    if (random1 > 10 && random1>random2) {
+      score.innerHTML = "🥳PLAYER ONE WINS🥳";
+       } else if (random2 >10 && random2>random1) {
+          score.innerHTML = "🥳PLAYER TWO WINS🥳";
+        } else if(random1==random2){
+           score.innerHTML = "Tie";
+       } else{
+        score.innerHTML = "Result";
+       }
    })
 
    button2.addEventListener("click",function(){
-    var random2 = Math.floor(Math.random()*10)
+     random2 = Math.floor(Math.random()*20)
     p2.textContent = random2
    })
  
-   var result = document.getElementById("score");
-   if(p1.textContent){
-    result.innerHTML="Result Await";
-   }
-console.log(result);   
+
+   
+   
 
  </script>
 </body>
